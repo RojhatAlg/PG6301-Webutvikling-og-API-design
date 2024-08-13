@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+// src/Components/ArticleDetail.jsx
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 const ArticleDetail = () => {
-  const { id } = useParams();
   const [article, setArticle] = useState(null);
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -12,21 +13,21 @@ const ArticleDetail = () => {
         const response = await axios.get(`http://localhost:5000/articles/${id}`);
         setArticle(response.data);
       } catch (error) {
-        console.error('Error fetching article', error);
+        console.error('Error fetching article', error.response ? error.response.data : error.message);
       }
     };
 
     fetchArticle();
   }, [id]);
 
-  if (!article) return <p>Loading...</p>;
+  if (!article) return <div>Loading...</div>;
 
   return (
     <div>
       <h1>{article.title}</h1>
       <p>Category: {article.category}</p>
       <p>{article.text}</p>
-      <p>Posted by: {article.author.username}</p>
+      <p>Author: {article.author.name}</p>
     </div>
   );
 };

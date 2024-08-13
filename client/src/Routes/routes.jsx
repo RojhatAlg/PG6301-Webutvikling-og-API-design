@@ -6,6 +6,9 @@ import AdminDashboard from '../Components/Pages/AdminDashboard';
 import CreateArticle from '../Components/CreateArticle';
 import EditArticle from '../Components/EditArticle';
 import MyArticles from '../Components/MyArticles';
+import ArticlesList from '../Components/ArticleList';
+import ArticleDetail from '../Components/ArticleDetail';
+import UserDashboard from '../Components/Pages/UserDashboard';
 
 function AppRoutes() {
     return(
@@ -17,6 +20,10 @@ function AppRoutes() {
             <Route path="/admin/create-article" element={<CreateArticle />} />
             <Route path="/admin/edit-article/:id" element={<EditArticle />} />
             <Route path="/admin/my-articles" element={<MyArticles />} />
+            <Route path="/" element={<ArticlesList />} />
+            <Route path="/articles" element={<ArticlesList />} />
+            <Route path="/article/:id" element={<ArticleDetail/>} />
+            <Route path="/user-dashboard" element={<UserDashboard/>} />
          </Routes>
     )
 }
