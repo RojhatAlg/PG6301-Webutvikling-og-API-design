@@ -1,4 +1,4 @@
-6926
+6928
 64E:\PG6301 Webutvikling og API-design\client\node_modules\asn1.js133680182848344969 1
 114E:\PG6301 Webutvikling og API-design\client\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\index.js133680136142254866 0
 92E:\PG6301 Webutvikling og API-design\client\node_modules\update-browserslist-db\package.json133680136117688488 0
@@ -13,7 +13,7 @@
 76E:\PG6301 Webutvikling og API-design\client\node_modules\minimalistic-assert133680182848394967 1
 79E:\PG6301 Webutvikling og API-design\client\node_modules\sha.js\test\vectors.js133680182850659709 0
 116E:\PG6301 Webutvikling og API-design\client\node_modules\lmdb\dependencies\lmdb-data-v1\libraries\liblmdb\mdb_stat.1133680136135515020 0
-48E:\PG6301 Webutvikling og API-design\client\dist133680292732974475 1
+48E:\PG6301 Webutvikling og API-design\client\dist133680314585487110 1
 137E:\PG6301 Webutvikling og API-design\client\node_modules\@parcel\source-map\parcel_sourcemap_wasm\dist-node\parcel_sourcemap_wasm_bg.wasm133680136145048014 0
 102E:\PG6301 Webutvikling og API-design\client\node_modules\@parcel\transformer-postcss\lib\loadConfig.js133680136115809126 0
 95E:\PG6301 Webutvikling og API-design\client\node_modules\caniuse-lite\data\features\css-zoom.js133680136154396586 0
@@ -63,7 +63,7 @@
 121E:\PG6301 Webutvikling og API-design\client\node_modules\@parcel\optimizer-svgo\node_modules\css-select\lib\sort.d.ts.map133680136130165783 0
 76E:\PG6301 Webutvikling og API-design\client\src\Components\Auth\Register.jsx133680277552416161 0
 87E:\PG6301 Webutvikling og API-design\client\node_modules\type-fest\source\value-of.d.ts133680136138120966 0
-58E:\PG6301 Webutvikling og API-design\client\src\Components133680281944153265 1
+58E:\PG6301 Webutvikling og API-design\client\src\Components133680295903079324 1
 88E:\PG6301 Webutvikling og API-design\client\node_modules\htmlnano\docs\docs\020-usage.md133680136140875139 0
 75E:\PG6301 Webutvikling og API-design\client\node_modules\tslib\package.json133680136119286312 0
 85E:\PG6301 Webutvikling og API-design\client\node_modules\semver\ranges\min-version.js133680136131126528 0
@@ -74,7 +74,7 @@
 132E:\PG6301 Webutvikling og API-design\client\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\syntax\pseudo\nth-child.js133680136144497337 0
 55E:\PG6301 Webutvikling og API-design\client\src\App.jsx133680220180208106 0
 110E:\PG6301 Webutvikling og API-design\client\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mtest_enc2.c133680136142574882 0
-65E:\PG6301 Webutvikling og API-design\client\src\Routes\routes.jsx133680281074799582 0
+65E:\PG6301 Webutvikling og API-design\client\src\Routes\routes.jsx133680298125779667 0
 88E:\PG6301 Webutvikling og API-design\client\node_modules\caniuse-lite\data\regions\SC.js133680136164388071 0
 80E:\PG6301 Webutvikling og API-design\client\node_modules\supports-color\index.js133680136112902078 0
 101E:\PG6301 Webutvikling og API-design\client\node_modules\caniuse-lite\data\features\serviceworkers.js133680136164597646 0
@@ -185,7 +185,7 @@
 67E:\PG6301 Webutvikling og API-design\client\node_modules\@remix-run133680153706824796 1
 74E:\PG6301 Webutvikling og API-design\client\node_modules\is-number\LICENSE133680136112819410 0
 117E:\PG6301 Webutvikling og API-design\client\node_modules\lightningcss-win32-x64-msvc\lightningcss.win32-x64-msvc.node133680136147225566 0
-76E:\PG6301 Webutvikling og API-design\client\src\Components\CreateArticle.jsx133680254800738771 0
+76E:\PG6301 Webutvikling og API-design\client\src\Components\CreateArticle.jsx133680314578646163 0
 79E:\PG6301 Webutvikling og API-design\client\node_modules\util-deprecate\LICENSE133680182848214657 0
 139E:\PG6301 Webutvikling og API-design\client\node_modules\stream-browserify\node_modules\readable-stream\lib\internal\streams\buffer_list.js133680182884494751 0
 74E:\PG6301 Webutvikling og API-design\client\node_modules\error-ex\index.js133680136111705143 0
@@ -224,7 +224,7 @@
 76E:\PG6301 Webutvikling og API-design\client\node_modules\hmac-drbg\README.md133680182848204643 0
 100E:\PG6301 Webutvikling og API-design\client\node_modules\caniuse-lite\data\features\web-animation.js133680136166623936 0
 87E:\PG6301 Webutvikling og API-design\client\node_modules\@swc\helpers\scripts\errors.js133680136150234600 0
-83E:\PG6301 Webutvikling og API-design\client\src\Components\Pages\AdminDashboard.jsx133680251430408501 0
+83E:\PG6301 Webutvikling og API-design\client\src\Components\Pages\AdminDashboard.jsx133680295282864621 0
 103E:\PG6301 Webutvikling og API-design\client\node_modules\csso\node_modules\css-tree\cjs\lexer\error.cjs133680136137720943 0
 96E:\PG6301 Webutvikling og API-design\client\node_modules\caniuse-lite\data\features\atob-btoa.js133680136138160967 0
 106E:\PG6301 Webutvikling og API-design\client\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\Doxyfile133680136120396313 0
@@ -4909,7 +4909,7 @@
 101E:\PG6301 Webutvikling og API-design\client\node_modules\caniuse-lite\data\features\array-includes.js133680136136922619 0
 137E:\PG6301 Webutvikling og API-design\client\node_modules\@parcel\optimizer-svgo\node_modules\css-select\lib\pseudo-selectors\pseudos.d.ts133680136137132614 0
 102E:\PG6301 Webutvikling og API-design\client\node_modules\caniuse-lite\data\features\arrow-functions.js133680136137122611 0
-66E:\PG6301 Webutvikling og API-design\client\dist\index.fb506c2f.js133680292732844488 0
+66E:\PG6301 Webutvikling og API-design\client\dist\index.fb506c2f.js133680314585379444 0
 98E:\PG6301 Webutvikling og API-design\client\node_modules\caniuse-lite\data\features\audiotracks.js133680136138700943 0
 90E:\PG6301 Webutvikling og API-design\client\node_modules\caniuse-lite\data\features\av1.js133680136139280938 0
 71E:\PG6301 Webutvikling og API-design\client\node_modules\braces\LICENSE133680136110875031 0
@@ -5407,6 +5407,7 @@
 88E:\PG6301 Webutvikling og API-design\client\node_modules\axios\lib\core\transformData.js133680208763668040 0
 90E:\PG6301 Webutvikling og API-design\client\node_modules\axios\lib\cancel\CanceledError.js133680208763196483 0
 88E:\PG6301 Webutvikling og API-design\client\node_modules\axios\lib\cancel\CancelToken.js133680208763216479 0
+73E:\PG6301 Webutvikling og API-design\client\src\Components\MyArticles.jsx133680312162638430 0
 83E:\PG6301 Webutvikling og API-design\client\node_modules\axios\lib\adapters\http.js133680208763397323 0
 85E:\PG6301 Webutvikling og API-design\client\node_modules\axios\lib\adapters\README.md133680208764410519 0
 128E:\PG6301 Webutvikling og API-design\client\node_modules\@parcel\optimizer-htmlnano\node_modules\css-select\lib\general.d.ts.map133680136127325980 0
@@ -6923,5 +6924,6 @@
 88E:\PG6301 Webutvikling og API-design\client\node_modules\.bin\update-browserslist-db.ps1133680136167550258 0
 67E:\PG6301 Webutvikling og API-design\client\dist\client.59712999.js133680137644332902 0
 70E:\PG6301 Webutvikling og API-design\client\dist\index.975ef6c8.js.map133680142291853755 0
-59E:\PG6301 Webutvikling og API-design\client\dist\index.html133680292731247346 0
-70E:\PG6301 Webutvikling og API-design\client\dist\index.fb506c2f.js.map133680292732964470 0
+74E:\PG6301 Webutvikling og API-design\client\src\Components\EditArticle.jsx133680295666747147 0
+59E:\PG6301 Webutvikling og API-design\client\dist\index.html133680314583137033 0
+70E:\PG6301 Webutvikling og API-design\client\dist\index.fb506c2f.js.map133680314585471932 0

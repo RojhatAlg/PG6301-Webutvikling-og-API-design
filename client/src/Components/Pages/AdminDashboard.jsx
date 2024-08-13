@@ -1,42 +1,23 @@
-//Admin får en velkomst
-//Admin kan velge å se nyhetsartikler, deretter velge å se detaljer per nyhetsartikkel (overskrift, navn, bilde)
-//Admin kan velge å se sin egen profilside med bruker info + artikler brukeren har opprettet
-//Admin kan velge å opprette en artikkel (bruker skal forhindres fra å sende en nyhetsartikkel som mangler kategori, tittel, tekst)
-//bAdmin skal kunne redigere en artikkel de selv har publisert
-//Admin skal kunne slette en artikkel de selv har publisert
-
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+// src/Components/AdminDashboard.jsx
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AdminDashboard = () => {
-  const [articles, setArticles] = useState([]);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/articles');
-        setArticles(response.data);
-      } catch (error) {
-        console.error('Error fetching articles', error);
-      }
-    };
+  // This could be more complex, involving actual role checking from the backend
+  const role = JSON.parse(localStorage.getItem('user')).role;
 
-    fetchArticles();
-  }, []);
+  if (role !== 'admin') {
+    return <div>Access Denied</div>;
+  }
 
   return (
     <div>
-      <h1>Admin Dashboard</h1>
-      <h2>Articles</h2>
-      <ul>
-        {articles.map((article) => (
-          <li key={article._id}>
-            <h3>{article.title}</h3>
-            <p>{article.category}</p>
-            <p>{article.text}</p>
-          </li>
-        ))}
-      </ul>
+      <h1>Welcome, Admin!</h1>
+      <button onClick={() => navigate('/admin/create-article')}>Create Article</button>
+      <button onClick={() => navigate('/admin/my-articles')}>My Articles</button>
+      <button onClick={() => navigate('/profile')}>My Profile</button>
     </div>
   );
 };
