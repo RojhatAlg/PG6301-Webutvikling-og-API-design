@@ -1,10 +1,10 @@
 import { Routes, Route, Naviagte } from 'react-router-dom';
-import Test from '../test'
+import Login from '../Auth/Login';
 
 function AppRoutes() {
     return(
         <Routes>
-            <Route path="/test" element={<Test />} />
+            <Route path="/login" element={<Login />} />
         </Routes>
     )
 }
