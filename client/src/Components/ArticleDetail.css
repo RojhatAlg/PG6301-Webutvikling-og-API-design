@@ -1,0 +1,65 @@
+/* Container for the article details */
+.article-detail-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title styling */
+  .article-detail-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  /* Category, text, and author styling */
+  .article-detail-category,
+  .article-detail-text,
+  .article-detail-author {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .article-detail-category {
+    font-weight: bold;
+  }
+  
+  .article-detail-text {
+    line-height: 1.6;
+  }
+  
+  .article-detail-author {
+    color: #555;
+  }
+  
+  /* Styling for the close button */
+  .close-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1em;
+  }
+  
+  /* Hover effect for the close button */
+  .close-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Loading state styling */
+  .loading {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #666;
+    padding: 2rem;
+  }
+  

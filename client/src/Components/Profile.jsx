@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import jwt from 'jwt-simple';
+import './Profile.css'; // Import the CSS file
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -35,19 +38,32 @@ const Profile = () => {
     }
   }, []);
 
+  const handleClose = () => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const userRole = storedUser?.role;
+
+    if (userRole === 'admin') {
+      navigate('/admin/dashboard');
+    } else if (userRole === 'user') {
+      navigate('/user-dashboard');
+    } else {
+      navigate('/'); // Default redirect if no user role found
+    }
+  };
+
   return (
-    <div>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+    <div className="profile-container">
+      {error && <p className="profile-error">{error}</p>}
       {user ? (
-        <div>
-          <h1>Profile</h1>
-          <p>Name: {user.name}</p>
-          <p>Email: {user.email}</p>
-          <p>Role: {user.role}</p>
-          {/* Display more user details as needed */}
+        <div className="profile-details">
+          <h1 className="profile-title">Profile</h1>
+          <p className="profile-info"><strong>Name:</strong> {user.name}</p>
+          <p className="profile-info"><strong>Email:</strong> {user.email}</p>
+          <p className="profile-info"><strong>Role:</strong> {user.role}</p>
+          <button className="close-button" onClick={handleClose}>Close</button>
         </div>
       ) : (
-        <p>Loading...</p>
+        <p className="profile-loading">Loading...</p>
       )}
     </div>
   );

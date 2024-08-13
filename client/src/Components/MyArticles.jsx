@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './MyArticles.css'; // Import the CSS file
 
 const MyArticles = () => {
   const [articles, setArticles] = useState([]);
@@ -43,28 +44,27 @@ const MyArticles = () => {
     setSelectedArticle(null);
   };
 
+  const handleClose = () => {
+    navigate('/admin/dashboard'); // Navigate to the homepage or ArticlesList
+  };
+
   return (
-    <div>
-      <h1>My Articles</h1>
+    <div className="my-articles-container">
+      <h1 className="my-articles-title">My Articles</h1>
       {articles.map(article => (
-        <div key={article._id} style={{ marginBottom: '20px' }}>
-          <h2>{article.title}</h2>
-          <button onClick={() => navigate(`/admin/edit-article/${article._id}`)}>Edit</button>
-          <button onClick={() => handleDelete(article._id)}>Delete</button>
-          <button onClick={() => handleDetailsClick(article)}>See Details</button>
+        <div key={article._id} className="article-item">
+          <h2 className="article-title">{article.title}</h2>
+          <div className="article-buttons">
+            <button className="edit-button" onClick={() => navigate(`/admin/edit-article/${article._id}`)}>Edit</button>
+            <button className="delete-button" onClick={() => handleDelete(article._id)}>Delete</button>
+            <button className="details-button" onClick={() => handleDetailsClick(article)}>See Details</button>
+          </div>
+          <button className="close-button" onClick={handleClose}>Close</button>
           {selectedArticle && selectedArticle._id === article._id && (
-            <div 
-              style={{ 
-                border: '1px solid #ddd', 
-                padding: '10px', 
-                marginTop: '10px', 
-                maxWidth: '100%', 
-                overflow: 'auto'
-              }}
-            >
+            <div className="article-details">
               <p><strong>Category:</strong> {selectedArticle.category}</p>
               <p><strong>Text:</strong> {selectedArticle.text}</p>
-              <button onClick={handleCloseDetails}>Close</button>
+              <button className="close-button" onClick={handleCloseDetails}>Close</button>
             </div>
           )}
         </div>

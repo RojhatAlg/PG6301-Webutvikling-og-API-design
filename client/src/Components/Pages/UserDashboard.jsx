@@ -1,6 +1,6 @@
-// src/Components/UserDashboard.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './UserDashboard.css'; // Import the CSS file
 
 const UserDashboard = () => {
   const navigate = useNavigate();
@@ -14,10 +14,16 @@ const UserDashboard = () => {
   };
 
   return (
-    <div>
-      <h1>User Dashboard</h1>
-      <button onClick={handleArticleList}>View Article List</button>
-      <button onClick={handleProfilePage}>View Profile Page</button>
+    <div className="user-dashboard-container">
+      <h1 className="user-dashboard-title">User Dashboard</h1>
+      <div className="user-dashboard-buttons">
+        <button className="user-dashboard-button" onClick={handleArticleList}>
+          View Article List
+        </button>
+        <button className="user-dashboard-button" onClick={handleProfilePage}>
+          View Profile Page
+        </button>
+      </div>
     </div>
   );
 };

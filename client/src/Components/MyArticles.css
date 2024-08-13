@@ -1,0 +1,79 @@
+/* MyArticles.css */
+
+.my-articles-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #282c34;
+    color: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .my-articles-title {
+    font-size: 2.5rem;
+    color: #61dafb;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .article-item {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 1rem;
+  }
+  
+  .article-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #ffcc00;
+  }
+  
+  .article-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .edit-button, .delete-button, .details-button, .close-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .edit-button {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .details-button {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .close-button {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  .edit-button:hover, .delete-button:hover, .details-button:hover, .close-button:hover {
+    opacity: 0.8;
+  }
+  
+  .article-details {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    max-width: 100%;
+    overflow: auto;
+  }
+  

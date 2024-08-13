@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import './CreateArticle.css'; // Import the CSS file
 
 const CreateArticle = () => {
   const [title, setTitle] = useState('');
@@ -7,6 +9,7 @@ const CreateArticle = () => {
   const [text, setText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [showError, setShowError] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,39 +36,47 @@ const CreateArticle = () => {
     }
   };
 
+  const handleClose = () => {
+    navigate('/admin/dashboard'); // Navigate to the homepage or ArticlesList
+  };
+
   return (
-    <div>
-      <h1>Create Article</h1>
-      {showError && <div style={{ color: 'red', marginBottom: '10px' }}>{errorMessage}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title:</label>
+    <div className="create-article-container">
+      <h1 className="create-article-title">Create Article</h1>
+      {showError && <div className="error-message">{errorMessage}</div>}
+      <form onSubmit={handleSubmit} className="create-article-form">
+        <div className="form-group">
+          <label className="form-label">Title:</label>
           <input 
             type="text" 
             value={title} 
             onChange={(e) => setTitle(e.target.value)} 
             required 
+            className="form-input"
           />
         </div>
-        <div>
-          <label>Category:</label>
+        <div className="form-group">
+          <label className="form-label">Category:</label>
           <input 
             type="text" 
             value={category} 
             onChange={(e) => setCategory(e.target.value)} 
             required 
+            className="form-input"
           />
         </div>
-        <div>
-          <label>Text:</label>
+        <div className="form-group">
+          <label className="form-label">Text:</label>
           <textarea 
             value={text} 
             onChange={(e) => setText(e.target.value)} 
             required 
+            className="form-textarea"
           ></textarea>
         </div>
-        <button type="submit">Create Article</button>
+        <button type="submit" className="create-article-button">Create Article</button>
       </form>
+      <button className="close-button" onClick={handleClose}>Close</button>
     </div>
   );
 };

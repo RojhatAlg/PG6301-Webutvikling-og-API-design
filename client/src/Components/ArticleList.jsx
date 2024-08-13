@@ -1,7 +1,7 @@
-// src/Components/ArticlesList.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './ArticleList.css'; // Import the CSS file
 
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
@@ -21,17 +21,17 @@ const ArticlesList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Articles</h1>
+    <div className="articles-list-container">
+      <h1 className="articles-list-title">Articles</h1>
       {articles.length > 0 ? (
         articles.map(article => (
-          <div key={article._id} style={{ marginBottom: '1em' }}>
-            <h2>{article.title}</h2>
-            <button onClick={() => navigate(`/article/${article._id}`)}>Read More</button>
+          <div key={article._id} className="article-item">
+            <h2 className="article-title">{article.title}</h2>
+            <button className="read-more-button" onClick={() => navigate(`/article/${article._id}`)}>Read More</button>
           </div>
         ))
       ) : (
-        <p>No articles available.</p>
+        <p className="no-articles">No articles available.</p>
       )}
     </div>
   );

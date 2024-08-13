@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './AdminDashboard.css'; // Import the CSS file
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -11,15 +12,23 @@ const AdminDashboard = () => {
   const role = user?.role;
 
   if (role !== 'admin') {
-    return <div>Access Denied</div>;
+    return <div className="access-denied">Access Denied</div>;
   }
 
   return (
-    <div>
-      <h1>Welcome, {user.name}</h1>
-      <button onClick={() => navigate('/admin/create-article')}>Create Article</button>
-      <button onClick={() => navigate('/admin/my-articles')}>My Articles</button>
-      <button onClick={() => navigate('/profile')}>My Profile</button>
+    <div className="admin-dashboard-container">
+      <h1 className="admin-dashboard-title">Welcome, {user.name}</h1>
+      <div className="admin-dashboard-buttons">
+        <button className="admin-dashboard-button" onClick={() => navigate('/admin/create-article')}>
+          Create Article
+        </button>
+        <button className="admin-dashboard-button" onClick={() => navigate('/admin/my-articles')}>
+          My Articles
+        </button>
+        <button className="admin-dashboard-button" onClick={() => navigate('/profile')}>
+          My Profile
+        </button>
+      </div>
     </div>
   );
 };

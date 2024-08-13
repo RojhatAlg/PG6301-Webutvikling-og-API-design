@@ -1,11 +1,12 @@
-// src/Components/ArticleDetail.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import './ArticleDetail.css'; // Import the CSS file
 
 const ArticleDetail = () => {
   const [article, setArticle] = useState(null);
   const { id } = useParams();
+  const navigate = useNavigate(); // Add useNavigate hook for navigation
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -20,14 +21,20 @@ const ArticleDetail = () => {
     fetchArticle();
   }, [id]);
 
-  if (!article) return <div>Loading...</div>;
+  const handleClose = () => {
+    navigate('/'); // Navigate to the homepage or ArticlesList
+  };
+
+  if (!article) return <div className="loading">Loading...</div>;
 
   return (
-    <div>
-      <h1>{article.title}</h1>
-      <p>Category: {article.category}</p>
-      <p>{article.text}</p>
-      <p>Author: {article.author.name}</p>
+    <div className="article-detail-container">
+      
+      <h1 className="article-detail-title">{article.title}</h1>
+      <p className="article-detail-category">Category: {article.category}</p>
+      <p className="article-detail-text">{article.text}</p>
+      <p className="article-detail-author">Author: {article.author.name}</p>
+      <button className="close-button" onClick={handleClose}>Close</button>
     </div>
   );
 };
