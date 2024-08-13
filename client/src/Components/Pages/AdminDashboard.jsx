@@ -1,12 +1,14 @@
-// src/Components/AdminDashboard.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
-
-  // This could be more complex, involving actual role checking from the backend
-  const role = JSON.parse(localStorage.getItem('user')).role;
+  
+  // Retrieve the user object from localStorage
+  const user = JSON.parse(localStorage.getItem('user'));
+  
+  // Check if the user object and role are available
+  const role = user?.role;
 
   if (role !== 'admin') {
     return <div>Access Denied</div>;
@@ -14,7 +16,7 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <h1>Welcome, Admin!</h1>
+      <h1>Welcome, {user.name}</h1>
       <button onClick={() => navigate('/admin/create-article')}>Create Article</button>
       <button onClick={() => navigate('/admin/my-articles')}>My Articles</button>
       <button onClick={() => navigate('/profile')}>My Profile</button>

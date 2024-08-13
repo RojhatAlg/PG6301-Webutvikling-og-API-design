@@ -9,3 +9,12 @@ export const isTokenExpired = (token) => {
     return true; // Assume token is expired or invalid if decoding fails
   }
 };
+
+export const logout = (navigate) => {
+    // Clear user data from localStorage
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  
+    // Redirect to the login page
+    navigate('/login');
+  };

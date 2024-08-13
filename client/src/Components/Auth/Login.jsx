@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+// src/Components/Auth/Login.jsx
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Utils/AuthContext';
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -12,14 +15,7 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:5000/users/login', { email, password });
       const { token, user } = response.data;
-
-      if (user) {
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user)); // Store user details as a JSON string
-        navigate('/profile'); // Redirect to profile page
-      } else {
-        console.error('User data not received');
-      }
+      login(token, user);
     } catch (error) {
       console.error('Error logging in', error.response ? error.response.data : error.message);
     }
