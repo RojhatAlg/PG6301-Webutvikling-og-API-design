@@ -2,23 +2,27 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-const PrivateRoute = ({ element: Component, requiredRoles = [], ...rest }) => {
+const ProtectedRoute = ({ element: Element, requiredRole, ...rest }) => {
   const token = localStorage.getItem('token');
-  const userRole = JSON.parse(localStorage.getItem('user'))?.role;
+  const user = token ? JSON.parse(atob(token.split('.')[1])) : null; // Decode JWT
+  
+  const isAuthenticated = !!token;
+  const userRole = user?.role; // Extract user role from token
 
-  console.log('Token:', token);  // Debugging
-  console.log('User Role:', userRole);  // Debugging
-  console.log('Required Roles:', requiredRoles);  // Debugging
-
-  if (!token) {
+  if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }
 
-  if (requiredRoles.length > 0 && !requiredRoles.includes(userRole)) {
-    return <div>Access Denied</div>;
+  if (requiredRole && userRole !== requiredRole) {
+    return (
+      <div>
+        <h1>Access Denied</h1>
+        <p>You do not have permission to access this page.</p>
+      </div>
+    );
   }
 
-  return <Component {...rest} />;
+  return <Element {...rest} />;
 };
 
-export default PrivateRoute;
+export default ProtectedRoute;
