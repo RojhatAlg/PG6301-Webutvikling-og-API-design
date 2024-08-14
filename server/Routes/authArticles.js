@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Article = require('../Models/Article');
-const verifyToken = require('../Middleware/VerifyToken'); // Adjust path if needed
+const verifyToken = require('../Middleware/VerifyToken');
 
 
 router.get('/my-articles', verifyToken, async (req, res) => {

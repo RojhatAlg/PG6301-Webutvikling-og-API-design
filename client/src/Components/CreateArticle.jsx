@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './CreateArticle.css'; // Import the CSS file
+import './CreateArticle.css';
 
 const CreateArticle = () => {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [text, setText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
 
@@ -20,11 +21,16 @@ const CreateArticle = () => {
         { title, category, text },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      // Clear the form and show success message
+      // Clear the form
       setTitle('');
       setCategory('');
       setText('');
-      alert('Article created successfully!');
+      // Set success message
+      setSuccessMessage('Article created successfully!');
+      // Redirect after a short delay
+      setTimeout(() => {
+        navigate('/admin/dashboard');
+      }, 2000); 
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.msg);
@@ -44,6 +50,7 @@ const CreateArticle = () => {
     <div className="create-article-container">
       <h1 className="create-article-title">Create Article</h1>
       {showError && <div className="error-message">{errorMessage}</div>}
+      {successMessage && <div className="success-message">{successMessage}</div>}
       <form onSubmit={handleSubmit} className="create-article-form">
         <div className="form-group">
           <label className="form-label">Title:</label>
@@ -57,13 +64,17 @@ const CreateArticle = () => {
         </div>
         <div className="form-group">
           <label className="form-label">Category:</label>
-          <input 
-            type="text" 
+          <select 
             value={category} 
             onChange={(e) => setCategory(e.target.value)} 
             required 
-            className="form-input"
-          />
+            className="form-select"
+          >
+            <option value="">Select a category</option>
+            <option value="Sport">Sport</option>
+            <option value="News">News</option>
+            <option value="Entertainment">Entertainment</option>
+          </select>
         </div>
         <div className="form-group">
           <label className="form-label">Text:</label>

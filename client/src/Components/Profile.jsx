@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import jwt from 'jwt-simple';
-import './Profile.css'; // Import the CSS file
+import './Profile.css';
 import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
@@ -38,19 +38,6 @@ const Profile = () => {
     }
   }, []);
 
-  const handleClose = () => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    const userRole = storedUser?.role;
-
-    if (userRole === 'admin') {
-      navigate('/admin/dashboard');
-    } else if (userRole === 'user') {
-      navigate('/user-dashboard');
-    } else {
-      navigate('/'); // Default redirect if no user role found
-    }
-  };
-
   return (
     <div className="profile-container">
       {error && <p className="profile-error">{error}</p>}
@@ -60,7 +47,6 @@ const Profile = () => {
           <p className="profile-info"><strong>Name:</strong> {user.name}</p>
           <p className="profile-info"><strong>Email:</strong> {user.email}</p>
           <p className="profile-info"><strong>Role:</strong> {user.role}</p>
-          <button className="close-button" onClick={handleClose}>Close</button>
         </div>
       ) : (
         <p className="profile-loading">Loading...</p>

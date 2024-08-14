@@ -1,5 +1,3 @@
-/* EditArticle.css */
-
 .edit-article-container {
     padding: 2rem;
     max-width: 800px;
@@ -44,6 +42,19 @@
     height: 150px;
     resize: vertical;
   }
+
+  .success-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    opacity: 0.9;
+  }
+  
   
   .edit-article-button {
     padding: 0.8rem 1.5rem;
@@ -59,4 +70,19 @@
   .edit-article-button:hover {
     opacity: 0.8;
   }
+
+  .close-button {
+    margin-top: 20px;
+    background-color: #ccc;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    background-color: #bbb;
+  }
+  
   

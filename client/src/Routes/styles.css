@@ -1,41 +1,36 @@
-.navbar ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-
-.navbar li {
-  margin: 0 1rem;
-}
-
-.navbar a, .navbar button {
-  color: #f2f2f2; /* Light text color for contrast */
-  text-decoration: none;
-  font-weight: bold;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.navbar button:hover, .navbar a:hover {
-  text-decoration: underline;
-}
-
 .app-container {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  height: 100vh;
-  background-color: #333; /* Dark background color */
-  color: #f2f2f2; /* Light text color for the whole app */
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
-.main-content {
-  padding: 20px;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
 }
 
-.footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #222;
-  color: white;
+.navbar-left,
+.navbar-middle,
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a,
+.navbar button {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 5px 10px;
+  border: none;
+  background: none;
+}
+
+.navbar a:hover,
+.navbar button:hover {
+  background-color: #575757;
+  border-radius: 3px;
 }

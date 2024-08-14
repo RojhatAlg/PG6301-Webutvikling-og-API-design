@@ -1,0 +1,85 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #282c34; 
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .navbar-left,
+  .navbar-middle,
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-left {
+    flex: 1;
+  }
+  
+  .navbar-middle {
+    flex: 2;
+    justify-content: center;
+    gap: 15px; /* Space between links */
+  }
+  
+  .navbar-right {
+    flex: 1;
+    justify-content: flex-end;
+    gap: 15px; /* Space between items */
+  }
+  
+  /* Navbar Links */
+  .navbar a {
+    color: #61dafb; 
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    transition: color 0.3s, background-color 0.3s; /* Smooth transitions */
+  }
+  
+  /* Navbar Links Hover Effect */
+  .navbar a:hover {
+    color: #ffffff; /* White color on hover */
+    background-color: rgba(97, 218, 251, 0.2); /* Light blue background on hover */
+    border-radius: 4px; /* Rounded corners for the hover effect */
+  }
+  
+  /* Navbar Button */
+  .navbar button {
+    background-color: #61dafb;
+    color: #282c34;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+  }
+  
+  /* Navbar Button Hover Effect */
+  .navbar button:hover {
+    background-color: #21a1f1; 
+    color: #ffffff; 
+  }
+  
+  /* Responsive Design for Smaller Screens */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .navbar-middle,
+    .navbar-right {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .navbar-right {
+      margin-top: 10px;
+    }
+  }
+  

@@ -6,7 +6,7 @@ const API = axios.create({
 
 export const login = (data) => API.post('/users/login', data);
 export const register = (data) => API.post('/users/register', data);
-export const fetchArticles = () => API.get('/articles');
+export const fetchArticles = () => API.get('/');
 export const fetchArticleById = (id) => API.get(`/articles/${id}`);
 export const createArticle = (data) => API.post('/articles', data, {
   headers: { 'x-auth-token': localStorage.getItem('token') }

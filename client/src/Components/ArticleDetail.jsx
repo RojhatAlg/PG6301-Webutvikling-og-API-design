@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
-import './ArticleDetail.css'; // Import the CSS file
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import './ArticleDetail.css';
 
 const ArticleDetail = () => {
   const [article, setArticle] = useState(null);
   const { id } = useParams();
-  const navigate = useNavigate(); // Add useNavigate hook for navigation
+  const navigate = useNavigate();
+  const location = useLocation(); // Use location to get the passed state
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -22,14 +23,17 @@ const ArticleDetail = () => {
   }, [id]);
 
   const handleClose = () => {
-    navigate('/'); // Navigate to the homepage or ArticlesList
+    if (location.state?.fromAdmin) {
+      navigate('/admin/my-articles'); // Navigate back to admin dashboard if coming from admin
+    } else {
+      navigate('/'); // Otherwise, navigate to homepage or general articles list
+    }
   };
 
   if (!article) return <div className="loading">Loading...</div>;
 
   return (
     <div className="article-detail-container">
-      
       <h1 className="article-detail-title">{article.title}</h1>
       <p className="article-detail-category">Category: {article.category}</p>
       <p className="article-detail-text">{article.text}</p>

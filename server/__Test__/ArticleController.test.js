@@ -2,17 +2,27 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Utils/AuthContext';
 import axios from 'axios';
-import './Login.css';
+import './Login.css'; // Import the CSS file
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState(''); // State for error message
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate fields
+    if (!email || !password) {
+      setErrorMessage('Both fields are required.');
+      setTimeout(() => {
+        setErrorMessage(''); // Clear the error message after 3 seconds
+      }, 3000);
+      return; // Stop the function if validation fails
+    }
+
     try {
       const response = await axios.post('http://localhost:5000/users/login', { email, password });
       const { token, user } = response.data;
@@ -31,7 +41,7 @@ const Login = () => {
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2 className="login-title">Login</h2>
-        {errorMessage && <div className="login-error-popup">{errorMessage}</div>}
+        {errorMessage && <div className="login-error-popup">{errorMessage}</div>} {/* Error popup */}
         <input
           type="email"
           className="login-input"

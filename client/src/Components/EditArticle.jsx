@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import './EditArticle.css'; // Import the CSS file
+import './EditArticle.css'; 
 
 const EditArticle = () => {
   const { id } = useParams();
   const [article, setArticle] = useState({ title: '', category: '', text: '' });
+  const [showPopup, setShowPopup] = useState(false); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,15 +33,35 @@ const EditArticle = () => {
       await axios.put(`http://localhost:5000/articles/${id}`, article, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      navigate('/admin/my-articles');
+
+      // Show the success popup
+      setShowPopup(true);
+
+      // Hide the popup after 3 seconds
+      setTimeout(() => {
+        setShowPopup(false);
+        navigate('/admin/my-articles');
+      }, 3000);
+
     } catch (error) {
       console.error('Error updating article', error.response ? error.response.data : error.message);
     }
   };
 
+  const handleClose = () => {
+    navigate('/admin/my-articles');
+  };
+
   return (
     <div className="edit-article-container">
       <h1 className="edit-article-title">Edit Article</h1>
+      
+      {showPopup && (
+        <div className="success-popup">
+          Article successfully created
+        </div>
+      )}
+
       <form onSubmit={handleUpdate} className="edit-article-form">
         <input
           type="text"
@@ -59,7 +80,6 @@ const EditArticle = () => {
           <option value="News">News</option>
           <option value="Sports">Sports</option>
           <option value="Entertainment">Entertainment</option>
-          {/* Add more categories as needed */}
         </select>
         <textarea
           value={article.text}
@@ -70,6 +90,10 @@ const EditArticle = () => {
         ></textarea>
         <button type="submit" className="edit-article-button">Update Article</button>
       </form>
+
+      <button className="close-button" onClick={handleClose}>
+        Close
+      </button>
     </div>
   );
 };

@@ -2,8 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('./config');
-const AuthUsers = require('./Routes/authUsers')
-const AuthArticles = require('./Routes/authArticles')
+const AuthUsers = require('./Routes/authUsers');
+const AuthArticles = require('./Routes/authArticles');
 const cors = require('cors');
 
 const app = express();
@@ -15,8 +15,13 @@ app.use(bodyParser.json());
 app.use('/users', AuthUsers);
 app.use('/articles', AuthArticles);
 
-mongoose.connect(config.MONGO_URI)
-    .then(() => console.log("Connected to MongoDB"))
-    .catch(err => console.error("Failed to connect to MongoDB:", err));
+// Only connect to the database if this is not in test environment
+if (process.env.NODE_ENV !== 'test') {
+    mongoose.connect(config.MONGO_URI)
+        .then(() => console.log("Connected to MongoDB"))
+        .catch(err => console.error("Failed to connect to MongoDB:", err));
+}
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
+
+module.exports = app; 
