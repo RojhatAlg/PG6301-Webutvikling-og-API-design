@@ -14,18 +14,26 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/users/login', { email, password });
-      const { token, user } = response.data;
-      login(token, user);
-      navigate('/'); // Redirect to home or another page on successful login
+        const response = await axios.post('http://localhost:5000/users/login', { email, password });
+        const { token, user } = response.data;
+
+        // Store the token and user information (you may already have a function like this)
+        login(token, user);
+
+        // Check the user's role and navigate accordingly
+        if (user.role === 'admin') {
+            navigate('/admin/dashboard');  // Redirect to admin dashboard
+        } else {
+            navigate('/user-dashboard');  // Redirect to user dashboard
+        }
     } catch (error) {
-      console.error('Error logging in', error.response ? error.response.data : error.message);
-      setErrorMessage('Wrong credentials, try again'); // Set the error message
-      setTimeout(() => {
-        setErrorMessage(''); // Clear the error message after 3 seconds
-      }, 3000);
+        console.error('Error logging in', error.response ? error.response.data : error.message);
+        setErrorMessage('Wrong credentials, try again'); // Set the error message
+        setTimeout(() => {
+            setErrorMessage(''); // Clear the error message after 3 seconds
+        }, 3000);
     }
-  };
+};
 
   return (
     <div className="login-container">

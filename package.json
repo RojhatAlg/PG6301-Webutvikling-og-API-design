@@ -1,0 +1,27 @@
+{
+  "name": "pg6301-webutvikling-og-api-design",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "install-backend": "npm install --prefix server",
+    "install-frontend": "npm install --prefix client",
+    "install": "npm run install-backend && npm run install-frontend",
+    "backend": "node server/index.js",
+    "frontend": "npm start --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "build": "npm install && npm install --prefix client && npm run build --prefix client",
+    "deploy": "npm run build --prefix client && npm start --prefix server",
+    "test": "concurrently \"npm test --prefix server\" \"npm test --prefix client\"",
+    "install-test": "npm install && npm test",
+    "install-test-backend": "npm install --prefix server && npm test --prefix server",
+    "install-test-frontend": "npm install --prefix client && npm test --prefix client",
+    "install-test-start": "npm install && npm test && npm start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

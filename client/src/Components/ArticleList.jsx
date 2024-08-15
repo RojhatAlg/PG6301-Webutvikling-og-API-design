@@ -10,7 +10,7 @@ const ArticlesList = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/articles');
+        const response = await axios.get('http://localhost:5000/articles'); // Updated path
         setArticles(response.data);
       } catch (error) {
         console.error('Error fetching articles', error.response ? error.response.data : error.message);
@@ -27,7 +27,7 @@ const ArticlesList = () => {
         articles.map(article => (
           <div key={article._id} className="article-item">
             <h2 className="article-title">{article.title}</h2>
-            <button className="read-more-button" onClick={() => navigate(`/article/${article._id}`)}>Read More</button>
+            <button className="read-more-button" onClick={() => navigate(`/articles/${article._id}`)}>Read More</button>
           </div>
         ))
       ) : (

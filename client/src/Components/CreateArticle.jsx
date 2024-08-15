@@ -17,25 +17,22 @@ const CreateArticle = () => {
     const token = localStorage.getItem('token');
 
     try {
-      await axios.post('http://localhost:5000/articles', 
+      await axios.post('http://localhost:5000/admin-articles', 
         { title, category, text },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      // Clear the form
       setTitle('');
       setCategory('');
       setText('');
-      // Set success message
       setSuccessMessage('Article created successfully!');
-      // Redirect after a short delay
       setTimeout(() => {
-        navigate('/admin/dashboard');
+        navigate('/admin/my-articles');
       }, 2000); 
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.msg);
         setShowError(true);
-        setTimeout(() => setShowError(false), 3000); // Hide message after 3 seconds
+        setTimeout(() => setShowError(false), 3000);
       } else {
         console.error('Error creating article', error.response ? error.response.data : error.message);
       }
@@ -43,7 +40,7 @@ const CreateArticle = () => {
   };
 
   const handleClose = () => {
-    navigate('/admin/dashboard'); // Navigate to the homepage or ArticlesList
+    navigate('/admin/dashboard');
   };
 
   return (

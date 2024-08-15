@@ -30,14 +30,12 @@ const EditArticle = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/articles/${id}`, article, {
+      await axios.put(`http://localhost:5000/admin-articles/${id}`, article, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      // Show the success popup
       setShowPopup(true);
 
-      // Hide the popup after 3 seconds
       setTimeout(() => {
         setShowPopup(false);
         navigate('/admin/my-articles');
@@ -58,7 +56,7 @@ const EditArticle = () => {
       
       {showPopup && (
         <div className="success-popup">
-          Article successfully created
+          Article successfully updated
         </div>
       )}
 

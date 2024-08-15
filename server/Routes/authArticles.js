@@ -1,9 +1,10 @@
+// AuthArticles.js
 const express = require('express');
 const router = express.Router();
 const Article = require('../Models/Article');
 const verifyToken = require('../Middleware/VerifyToken');
 
-
+// Fetch the articles of the authenticated user
 router.get('/my-articles', verifyToken, async (req, res) => {
   try {
     const articles = await Article.find({ author: req.user.id }).populate('author', 'name email');
@@ -13,6 +14,7 @@ router.get('/my-articles', verifyToken, async (req, res) => {
     res.status(500).json({ msg: 'Server error' });
   }
 });
+
 // Create a new article
 router.post('/', verifyToken, async (req, res) => {
   const { title, category, text } = req.body;
@@ -38,29 +40,6 @@ router.post('/', verifyToken, async (req, res) => {
     await newArticle.save();
 
     res.status(201).json(newArticle);
-  } catch (err) {
-    console.error('Server error:', err);
-    res.status(500).json({ msg: 'Server error' });
-  }
-});
-
-// Fetch all articles
-router.get('/', async (req, res) => {
-  try {
-    const articles = await Article.find().populate('author', 'name email');
-    res.json(articles);
-  } catch (err) {
-    console.error('Server error:', err);
-    res.status(500).json({ msg: 'Server error' });
-  }
-});
-
-// Fetch a single article by ID
-router.get('/:id', async (req, res) => {
-  try {
-    const article = await Article.findById(req.params.id).populate('author', 'name email');
-    if (!article) return res.status(404).json({ msg: 'Article not found' });
-    res.json(article);
   } catch (err) {
     console.error('Server error:', err);
     res.status(500).json({ msg: 'Server error' });
@@ -101,7 +80,6 @@ router.delete('/:id', verifyToken, async (req, res) => {
       return res.status(403).json({ msg: 'Not authorized to delete this article' });
     }
 
-    // Use deleteOne instead of remove
     await Article.deleteOne({ _id: req.params.id });
     res.json({ msg: 'Article removed' });
   } catch (err) {

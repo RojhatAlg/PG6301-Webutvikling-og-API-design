@@ -1,65 +1,79 @@
-import React, { useEffect, useState } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import Login from '../Components/Auth/Login';
+import React, { useContext } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { AuthContext } from '../Components/Utils/AuthContext'; // Correct path for AuthContext
+import Login from '../Components/Auth/Login'; // Adjust paths as necessary
 import Register from '../Components/Auth/Register';
-import Profile from '../Components/Profile';
+import UserDashboard from '../Components/Pages/UserDashboard';
 import AdminDashboard from '../Components/Pages/AdminDashboard';
-import CreateArticle from '../Components/CreateArticle';
-import EditArticle from '../Components/EditArticle';
-import MyArticles from '../Components/MyArticles';
 import ArticlesList from '../Components/ArticleList';
 import ArticleDetail from '../Components/ArticleDetail';
-import UserDashboard from '../Components/Pages/UserDashboard';
-import Navbar from '../Components/Navbar'; 
-import './styles.css';
+import EditArticle from '../Components/EditArticle';
+import MyArticles from '../Components/MyArticles';
+import CreateArticle from '../Components/CreateArticle';
+import Profile from '../Components/Profile';
 
-function AppRoutes() {
-  const [user, setUser] = useState(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, [location]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
-    setUser(null);
-  };
+const AppRouter = () => {
+  const { isAuthenticated, userRole } = useContext(AuthContext); // Use useContext to access AuthContext
 
   return (
-    <div className="app-container">
-      <Navbar /> 
-      <Routes>
-        <Route path="/" element={<ArticlesList />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<PrivateRoute element={Profile} />} />
-        <Route path="/article/:id" element={<PrivateRoute element={ArticleDetail} />} />
-        <Route path="/user-dashboard" element={<PrivateRoute element={UserDashboard} requiredRole="user" />} />
-        <Route path="/admin/dashboard" element={<PrivateRoute element={AdminDashboard} requiredRole="admin" />} />
-        <Route path="/admin/create-article" element={<PrivateRoute element={CreateArticle} requiredRole="admin" />} />
-        <Route path="/admin/edit-article/:id" element={<PrivateRoute element={EditArticle} requiredRole="admin" />} />
-        <Route path="/admin/my-articles" element={<PrivateRoute element={MyArticles} requiredRole="admin" />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </div>
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/articles" element={<ArticlesList />} />
+      <Route path="/public-articles" element={<ArticlesList />} />
+      <Route path="/article/:id" element={<ArticleDetail />} />
+
+      {/* Routes for Unauthenticated Users */}
+      {!isAuthenticated && (
+        <>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </>
+      )}
+
+      {/* Routes for Authenticated Users */}
+      {isAuthenticated && (
+        <>
+          {/* Redirects for User Role */}
+          {userRole === 'user' && (
+            <>
+              <Route path="/user-dashboard" element={<UserDashboard />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/admin/create-article" element={<Navigate to="/user-dashboard" />} />
+              <Route path="/admin/edit-article/:id" element={<Navigate to="/user-dashboard" />} />
+              <Route path="/admin/my-articles" element={<Navigate to="/user-dashboard" />} />
+            </>
+          )}
+
+          {/* Redirects for Admin Role */}
+          {userRole === 'admin' && (
+            <>
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/my-articles" element={<MyArticles />} />
+              <Route path="/admin/edit-article/:id" element={<EditArticle />} />
+              <Route path="/admin/create-article" element={<CreateArticle />} />
+              <Route path="/user-dashboard" element={<Navigate to="/admin/dashboard" />} />
+              <Route path="/profile" element={<Profile />} />
+            </>
+          )}
+
+          {/* Common Routes for Both User and Admin */}
+          <Route path="/articles/:id" element={<ArticleDetail />} />
+        </>
+      )}
+
+      {/* Redirects for Authenticated Users */}
+      {isAuthenticated && (
+        <>
+          <Route path="/login" element={<Navigate to={userRole === 'admin' ? '/admin/dashboard' : '/user-dashboard'} />} />
+          <Route path="/register" element={<Navigate to={userRole === 'admin' ? '/admin/dashboard' : '/user-dashboard'} />} />
+        </>
+      )}
+
+      {/* Default Route */}
+      <Route path="/" element={<Navigate to="/articles" />} />
+      <Route path="*" element={<Navigate to="/articles" />} /> {/* Handle 404s */}
+    </Routes>
   );
-}
-
-// PrivateRoute component to handle role-based access
-const PrivateRoute = ({ element: Component, requiredRole, ...rest }) => {
-  const storedUser = JSON.parse(localStorage.getItem('user'));
-  const userRole = storedUser?.role;
-
-  if (!userRole || (requiredRole && userRole !== requiredRole)) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return <Component {...rest} />;
 };
 
-export default AppRoutes;
+export default AppRouter;

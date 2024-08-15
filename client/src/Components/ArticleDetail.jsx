@@ -7,7 +7,7 @@ const ArticleDetail = () => {
   const [article, setArticle] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
-  const location = useLocation(); // Use location to get the passed state
+  const location = useLocation();
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -24,9 +24,9 @@ const ArticleDetail = () => {
 
   const handleClose = () => {
     if (location.state?.fromAdmin) {
-      navigate('/admin/my-articles'); // Navigate back to admin dashboard if coming from admin
+      navigate('/admin/my-articles');
     } else {
-      navigate('/'); // Otherwise, navigate to homepage or general articles list
+      navigate('/articles'); // Navigates to the home page
     }
   };
 
