@@ -4,12 +4,15 @@
   "description": "Your project description here",
   "main": "server/index.js",
   "scripts": {
-  "install-backend": "npm install --prefix server",
-  "install-frontend": "npm install --prefix client",
-  "build": "npm run install-backend && npm run install-frontend && cd client && npm run build",
-  "start": "node server/index.js",
-  "heroku-postbuild": "cd client && npm install && npm run build"
-},
+    "install-backend": "npm install --prefix server",
+    "install-frontend": "npm install --prefix client",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start",
+    "start-server": "node server/index.js",
+    "start": "npm run install-backend && npm run install-frontend && concurrently \"npm run start-client\" \"npm run start-server\"",
+    "test": "echo \"No tests specified\" && exit 0",
+    "install-test-start": "npm install && npm test && npm run start"
+  },
   "engines": {
     "node": "20.x"
   },
@@ -22,5 +25,6 @@
     "react-router-dom": "^6.26.0"
   },
   "devDependencies": {
+    "concurrently": "^8.0.1"
   }
 }

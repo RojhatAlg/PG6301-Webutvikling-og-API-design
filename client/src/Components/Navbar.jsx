@@ -22,7 +22,6 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Link to="/public-articles">View Articles</Link>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
           </>
