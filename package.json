@@ -4,12 +4,12 @@
   "description": "Your project description here",
   "main": "server/index.js",
   "scripts": {
-    "install-backend": "npm install --prefix server",
-    "install-frontend": "npm install --prefix client",
-    "build": "npm run install-backend && npm run install-frontend && npm run build --prefix client",
-    "start": "node server/index.js",
-    "heroku-postbuild": "npm run build"
-  },
+  "install-backend": "npm install --prefix server",
+  "install-frontend": "npm install --prefix client",
+  "build": "npm run install-backend && npm run install-frontend && cd client && npm run build",
+  "start": "node server/index.js",
+  "heroku-postbuild": "cd client && npm install && npm run build"
+},
   "engines": {
     "node": "20.x"
   },
