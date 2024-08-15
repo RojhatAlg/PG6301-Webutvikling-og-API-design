@@ -10,7 +10,7 @@
     "start-client": "cd client && npm run start",
     "start-server": "node server/index.js",
     "start": "npm run install-backend && npm run install-frontend && concurrently \"npm run start-client\" \"npm run start-server\"",
-    "test": "echo \"No tests specified\" && exit 0",
+    "test": "jest --config=jest.config.js",
     "install-test-start": "npm install && npm test && npm run start"
   },
   "engines": {
